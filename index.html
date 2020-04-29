@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	<title>Pune food kitchen map</title>
+	    <script src='https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.1.0/papaparse.min.js'></script>
+  <meta name='viewport'
+        content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no'/>
+    <link rel='stylesheet' type='text/css' href='https://api.tomtom.com/maps-sdk-for-web/cdn/5.x/5.52.0/maps/maps.css'>
+    <link rel='stylesheet' type='text/css' href='../assets/ui-library/index.css'/>
+    <link rel='stylesheet' type='text/css' href='https://api.tomtom.com/maps-sdk-for-web/cdn/plugins/PanControls/1.0.11//PanControls.css'/>
+    <link rel='stylesheet' type='text/css' href='https://api.tomtom.com/maps-sdk-for-web/cdn/plugins/ZoomControls/1.0.10//ZoomControls.css'/>
+	<script src='https://api.tomtom.com/maps-sdk-for-web/cdn/plugins/PanControls/1.0.11//PanControls-web.js'></script>
+		<script src='https://api.tomtom.com/maps-sdk-for-web/cdn/plugins/ZoomControls/1.0.10//ZoomControls-web.js'></script>
+		<script src='https://api.tomtom.com/maps-sdk-for-web/cdn/5.x/5.52.0/maps/maps-web.min.js'></script>
+		<script type='text/javascript' src='../assets/js/mobile-or-tablet.js'></script>
+		<style>
+			  #map {
+				  border-left: 1px solid #fff;
+				  position: absolute;
+				  width: 99%;
+				  top: 0;
+				  bottom: 0;
+				}
+				 .margin-left-30 {
+								margin-left: 30px;
+								}
+    .popup {
+      padding-bottom: 5px;
+    }
+
+    .popup-close-button {
+      display: none;
+    }
+
+    .popup-content {
+      font: 400 15px/22px 'Source Sans Pro', 'Helvetica Neue', Sans-serif;
+      padding: 0;
+      width: 250px;
+    }
+
+    .popup-content-wrapper {
+      padding: 1%;
+    }
+
+    .popup-content h3 {
+      background: rgb(61, 59, 59);
+      text-align: center;
+      color: #fff;
+      margin: 0;
+      display: block;
+      padding: 15px;
+      font-weight: 700;
+      margin-top: -5px;
+    }
+
+    .popup-content h4 {
+      margin: 0;
+      display: block;
+      padding: 10px 3px 10px 10px;
+      font-weight: 400;
+    }
+
+    .container {
+      cursor: pointer;
+    }
+
+    .popup-anchor-top>.popup-content {
+      margin-top: 3px;
+    }
+
+    .popup-anchor-top>.popup-tip {
+      border-bottom-color: rgb(61, 59, 59);
+	}
+ .marker-icon {
+			background-image: 'Food_Bank_icon.svg';
+            background-position: center;
+            background-size: 22px 22px;
+            border-radius: 50%;
+            height: 22px;
+            left: 4px;
+            position: absolute;
+            text-align: center;
+            top: 3px;
+            transform: rotate(45deg);
+            width: 22px;
+        }
+        .marker {
+            height: 30px;
+            width: 30px;
+        }
+        .marker-content {
+            background: #c30b82;
+            border-radius: 50% 50% 50% 0;
+            height: 30px;
+            left: 50%;
+            margin: -15px 0 0 -15px;
+            position: absolute;
+            top: 50%;
+            transform: rotate(-45deg);
+            width: 30px;
+        }
+        .marker-content::before {
+            background: #ffffff;
+            border-radius: 50%;
+            content: "";
+            height: 24px;
+            margin: 3px 0 0 3px;
+            position: absolute;
+            width: 24px;
+        }	
+        </style>
+    </head>
+    <body>
+        <div id='map'></div>
+        <script>
+		
+            var map = tt.map({
+                container: 'map',
+                key: '2PaeD4XGBugNF3hwjRa3uRosjkvxAMp8',
+                style: 'tomtom://vector/1/basic-main',
+				center: [73.89008,18.55955], 
+				zoom: 12
+						});
+			var ttZoomControls = new tt.plugins.ZoomControls({
+																className: 'margin-left-30'
+																	});
+			var ttPanControls = new tt.plugins.PanControls();
+			map.addControl(new tt.FullscreenControl());
+
+			map.addControl(ttZoomControls, 'top-left');
+			map.addControl(ttPanControls, 'top-left');
+      map.on("load", function() {
+        init();
+      });
+      function init() {
+		 Papa.parse('https://docs.google.com/spreadsheets/d/e/2PACX-1vQd8ITujHRZ83u7WVbukyq_lOFHZVcTbYZ5ZQcUBjP2chJZ130uJ6Gdu_9ZzTXf1OQhxcQCUMn0ijx9/pub?output=csv', {
+          download: true,
+          header: true,
+		  complete:  addPoints});
+		
+      }
+      // create a function called addPoints that iterates through your table (row by row) to create markers and popups
+      function addPoints(results) {
+	  
+		var data=results.data;
+
+        // iterate through your table to set the marker to lat/long values for each row
+
+        data.forEach(function(row) {
+
+          // create a variable for your popup and populate your popup with information from your table
+          var popup = new tt.Popup()
+            .setHTML(`<h3>` + row.Name + `</h3>` + '<h4>' + '<b>' + 'Address: ' + '</b>' + row.Address + '</h4>' + '<h4>' + '<b>' + 'Phone: ' + '</b>' + row.Phone + '</h4>'); // use the table to populate your popup with text
+
+
+          // create a variable for your markup and add it to the map 
+          var marker = new tt.Marker({
+              color: lookupColor(row)
+            })
+            .setLngLat([row.Longitude, row.Latitude])
+            .setPopup(popup)
+            .addTo(map); // add the marker to the map
+
+
+        });
+      }
+			function lookupColor(row){
+					  if( row.Name.includes('TomTom') )
+					         return 'green';
+					  else return 'purple';
+			}
+        </script>
+    </body>
+</html>
