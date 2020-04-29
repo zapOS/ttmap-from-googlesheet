@@ -149,7 +149,15 @@
         data.forEach(function(row) {
 
           // create a variable for your popup and populate your popup with information from your table
-          var popup = new tt.Popup()
+	  var popupOffsets = {
+			  top: [0, 0],
+			  bottom: [0, -20],
+			  'bottom-right': [0, -20],
+			  'bottom-left': [0, -20],
+			  left: [5, -15],
+			  right: [-5, -15]
+			}
+          var popup = new tt.Popup({offset: popupOffsets})
             .setHTML(`<h3>` + row.Name + `</h3>` + '<h4>' + '<b>' + 'Address: ' + '</b>' + row.Address + '</h4>' + '<h4>' + '<b>' + 'Phone: ' + '</b>' + row.Phone + '</h4>'); // use the table to populate your popup with text
 
 
