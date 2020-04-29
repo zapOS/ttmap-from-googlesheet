@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html>
 	<head>
-	<title>Pune food kitchen map</title>
-	    <script src='https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.1.0/papaparse.min.js'></script>
-  <meta name='viewport'
+		<title>Pune food kitchen map</title>
+		<script src='https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.1.0/papaparse.min.js'></script>
+		<meta name='viewport'
         content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no'/>
-    <link rel='stylesheet' type='text/css' href='https://api.tomtom.com/maps-sdk-for-web/cdn/5.x/5.52.0/maps/maps.css'>
-    <link rel='stylesheet' type='text/css' href='../assets/ui-library/index.css'/>
-    <link rel='stylesheet' type='text/css' href='https://api.tomtom.com/maps-sdk-for-web/cdn/plugins/PanControls/1.0.11//PanControls.css'/>
-    <link rel='stylesheet' type='text/css' href='https://api.tomtom.com/maps-sdk-for-web/cdn/plugins/ZoomControls/1.0.10//ZoomControls.css'/>
-	<script src='https://api.tomtom.com/maps-sdk-for-web/cdn/plugins/PanControls/1.0.11//PanControls-web.js'></script>
-		<script src='https://api.tomtom.com/maps-sdk-for-web/cdn/plugins/ZoomControls/1.0.10//ZoomControls-web.js'></script>
-		<script src='https://api.tomtom.com/maps-sdk-for-web/cdn/5.x/5.52.0/maps/maps-web.min.js'></script>
-		<style>
+		<link rel='stylesheet' type='text/css' href='https://api.tomtom.com/maps-sdk-for-web/cdn/5.x/5.52.0/maps/maps.css'>
+			<link rel='stylesheet' type='text/css' href='../assets/ui-library/index.css'/>
+			<link rel='stylesheet' type='text/css' href='https://api.tomtom.com/maps-sdk-for-web/cdn/plugins/PanControls/1.0.11//PanControls.css'/>
+			<link rel='stylesheet' type='text/css' href='https://api.tomtom.com/maps-sdk-for-web/cdn/plugins/ZoomControls/1.0.10//ZoomControls.css'/>
+			<script src='https://api.tomtom.com/maps-sdk-for-web/cdn/plugins/PanControls/1.0.11//PanControls-web.js'></script>
+			<script src='https://api.tomtom.com/maps-sdk-for-web/cdn/plugins/ZoomControls/1.0.10//ZoomControls-web.js'></script>
+			<script src='https://api.tomtom.com/maps-sdk-for-web/cdn/5.x/5.52.0/maps/maps-web.min.js'></script>
+			<style>
 			  #map {
 				  border-left: 1px solid #fff;
 				  position: absolute;
@@ -108,17 +108,17 @@
             width: 24px;
         }	
         </style>
-    </head>
-    <body>
-        <div id='map'></div>
-        <script>
+		</head>
+		<body>
+			<div id='map'></div>
+			<script>
 	    var DEFAULT_POSITION={"lat":18.55955,"lon":73.89008}	
             var map = tt.map({
                 container: 'map',
                 key: '2PaeD4XGBugNF3hwjRa3uRosjkvxAMp8',
                 style: 'tomtom://vector/1/basic-main',
 				center: [DEFAULT_POSITION.lon,DEFAULT_POSITION.lat], 
-				zoom: 12
+				zoom: 10
 						});
 			var ttZoomControls = new tt.plugins.ZoomControls({
 																className: 'margin-left-30'
@@ -158,7 +158,14 @@
 			  right: [-5, -15]
 			}
           var popup = new tt.Popup({offset: popupOffsets})
-            .setHTML('<h3>'	 + row["Food required location (Eg: Lohegoan, Pune)"] + '</h3>' + '<h4>' + '<b>Number: ' + '</b>' + row["No. of People require food (accept more than 10 only)"] + '</h4>' + '<h4>' + '<b>' + 'Category: ' + '</b>' + row["Beneficiary Category"] + '</h4>'); // use the table to populate your popup with text
+            .setHTML('
+				<h3>'	 + row["Food required location (Eg: Lohegoan, Pune)"] + '</h3>' + '
+				<h4>' + '
+					<b>Number: ' + '</b>' + row["No. of People require food (accept more than 10 only)"] + '
+				</h4>' + '
+				<h4>' + '
+					<b>' + 'Category: ' + '</b>' + row["Beneficiary Category"] + '
+				</h4>'); // use the table to populate your popup with text
 
           // create a variable for your markup and add it to the map 
           var marker = new tt.Marker({
@@ -175,6 +182,7 @@
 				return 'green';
 				
 			}
-        </script>
-    </body>
-</html>
+        
+			</script>
+		</body>
+	</html>
