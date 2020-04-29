@@ -12,7 +12,6 @@
 	<script src='https://api.tomtom.com/maps-sdk-for-web/cdn/plugins/PanControls/1.0.11//PanControls-web.js'></script>
 		<script src='https://api.tomtom.com/maps-sdk-for-web/cdn/plugins/ZoomControls/1.0.10//ZoomControls-web.js'></script>
 		<script src='https://api.tomtom.com/maps-sdk-for-web/cdn/5.x/5.52.0/maps/maps-web.min.js'></script>
-		<script type='text/javascript' src='../assets/js/mobile-or-tablet.js'></script>
 		<style>
 			  #map {
 				  border-left: 1px solid #fff;
@@ -133,7 +132,7 @@
         init();
       });
       function init() {
-		 Papa.parse('https://docs.google.com/spreadsheets/d/e/2PACX-1vQd8ITujHRZ83u7WVbukyq_lOFHZVcTbYZ5ZQcUBjP2chJZ130uJ6Gdu_9ZzTXf1OQhxcQCUMn0ijx9/pub?output=csv', {
+		 Papa.parse('https://docs.google.com/spreadsheets/d/e/2PACX-1vSeCiMDDw6Dt3EEBw6c-Bq17O7FII-a8ScJY1_7DOrE-a9Pi767JzqGfJxnFRn9uiQ4Oi2XtGaB6pWT/pub?output=csv', {
           download: true,
           header: true,
 		  complete:  addPoints});
@@ -147,7 +146,8 @@
         // iterate through your table to set the marker to lat/long values for each row
 
         data.forEach(function(row) {
-
+        //add markers only when location is specified
+         if(row["Food required location (Eg: Lohegoan, Pune)"]){
           // create a variable for your popup and populate your popup with information from your table
 	  var popupOffsets = {
 			  top: [0, 0],
@@ -158,8 +158,7 @@
 			  right: [-5, -15]
 			}
           var popup = new tt.Popup({offset: popupOffsets})
-            .setHTML(`<h3>` + row.Name + `</h3>` + '<h4>' + '<b>' + 'Address: ' + '</b>' + row.Address + '</h4>' + '<h4>' + '<b>' + 'Phone: ' + '</b>' + row.Phone + '</h4>'); // use the table to populate your popup with text
-
+            .setHTML('<h3>'	 + row["Food required location (Eg: Lohegoan, Pune)"] + '</h3>' + '<h4>' + '<b>Number: ' + '</b>' + row["No. of People require food (accept more than 10 only)"] + '</h4>' + '<h4>' + '<b>' + 'Category: ' + '</b>' + row["Beneficiary Category"] + '</h4>'); // use the table to populate your popup with text
 
           // create a variable for your markup and add it to the map 
           var marker = new tt.Marker({
@@ -173,9 +172,8 @@
         });
       }
 			function lookupColor(row){
-					  if( row.Name.includes('TomTom') )
-					         return 'green';
-					  else return 'purple';
+				return 'green';
+				
 			}
         </script>
     </body>
