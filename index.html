@@ -112,12 +112,12 @@
     <body>
         <div id='map'></div>
         <script>
-		
+	    var DEFAULT_POSITION={"lat":18.55955,"lon":73.89008}	
             var map = tt.map({
                 container: 'map',
                 key: '2PaeD4XGBugNF3hwjRa3uRosjkvxAMp8',
                 style: 'tomtom://vector/1/basic-main',
-				center: [73.89008,18.55955], 
+				center: [DEFAULT_POSITION.lon,DEFAULT_POSITION.lat], 
 				zoom: 12
 						});
 			var ttZoomControls = new tt.plugins.ZoomControls({
