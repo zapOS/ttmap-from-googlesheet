@@ -149,8 +149,7 @@
          right: [-5, -15]
          }
               var popup = new tt.Popup({offset: popupOffsets})
-                .setHTML('<h3>'	 + row["Food required location (Eg: Lohegoan, Pune)"] + '</h3>' + '<h4>' + '<b>Number: ' + '</b>' + row["No. of People require food (accept more than 10 only)"] + '</h4>' + '<h4>' + '<b>' + 'Category: ' + '</b>' + row["Beneficiary Category"] + '</h4>'); // use the table to populate your popup with text
-         
+                            .setHTML('<h3>'+row["Full Name of Requester / Referral "]+' : '+row['Mobile Number of Requester / Referral']+'</h3><h4>' + row["Food required location (Eg: Lohegoan, Pune)"] + '</h4>' + '<h4>' + 'Number of people: ' + row["No. of People require food (accept more than 10 only)"] + '</h4>' ); // use the table to populate your popup with text
               // create a variable for your markup and add it to the map 
               var marker = new tt.Marker({
                   color: lookupColor(row)
@@ -163,8 +162,13 @@
          }});
           }
          function lookupColor(row){
-         return 'green';
-         
+			if (row["Status"].toLowerCase()== "ordered")
+				return 'red'
+			else if (row["Status"].toLowerCase()== "dispatched")
+				return 'amber'
+			else if (row["Status"].toLowerCase()== "delivered")
+				 return 'green'
+         return 'blue';         
          }
             
       </script>
