@@ -74,30 +74,66 @@
          transform: rotate(45deg);
          width: 22px;
          }
-         .marker {
-         height: 30px;
-         width: 30px;
-         }
-         .marker-content {
-         background: #c30b82;
-         border-radius: 50% 50% 50% 0;
-         height: 30px;
-         left: 50%;
-         margin: -15px 0 0 -15px;
-         position: absolute;
-         top: 50%;
-         transform: rotate(-45deg);
-         width: 30px;
-         }
-         .marker-content::before {
-         background: #ffffff;
-         border-radius: 50%;
-         content: "";
-         height: 24px;
-         margin: 3px 0 0 3px;
-         position: absolute;
-         width: 24px;
-         }	
+		.marker{
+			font-family: "Tahoma", sans-serif;
+			font-size: 11px;
+			padding-top: 5px;
+			width: 27px;
+			height: 27px;
+			text-align: center;
+		}
+
+		.marker-black{
+		color: #fff;
+		background-repeat: no-repeat;
+		background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABsAAAAbCAYAAACN1PRVAAAABmJLR0QA/wD/AP+gvaeTAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH3AUWDBYAATi9dAAAAWVJREFUSMftlrFuwjAQhj+blCCKuvU1OrQsqKsf22vF1D5JqSLURgQM6fJbskIgLcIbJ51sRcl9vjsr9xsA55wBRvK7ZG/4v7XAXr6Le+99awQqgDEwkY8FsxfADgJsgY18C4RCQcfAFHjQWuoAl1oAGqAG1jHjCJsI9AgsuZ4tkmxDoR5NlNHSe381knNuCTyplI1NyliSx8p4B2xy84pMsNiqkdX1tuQ1C5jckCPiDXaD3WD5Ya3+yjntALQ2maohEyhEhk2mapMJ1ij+vpBO2GiqLjSDjmxozjnnTg3PWvF3xjlXaOb0yQKTiJ63U0CBXhPBs+vIgjoOz1jGGqiAL2AFfGqtgG9g3nd6PZvrnUrfrBSnUtwtsDcDUs4qwzKRDh8xQ4Gek1I1yir0SrmBPpgENlOZZ8C7XnlRRmutDRC8921fvEER2gFOgXtpClSen9iTc6A/wTrAcUdThuRqnwUB/AIqeYeoNuNZpAAAAABJRU5ErkJggg==);
+		}
+
+		.marker-green{
+		color: #000;
+		background-repeat: no-repeat;
+		background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABsAAAAbCAYAAACN1PRVAAAABmJLR0QA/wD/AP+gvaeTAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH3AUWDBUOza3DsAAAAalJREFUSMftlr1OwmAUhp+W2lYwDkZZHLgDB2Uhrixujo5eGqMjG0tXw6Leg4MLIQ5GoYViXd4vOSkIys/GSU76Nflynp6f9LweQLvd9oCK/MCcPf5vBTCTT905SZLCEygAQiCWh4L5a8C+BZgAqXwC5IGChkAVONYz0gesazmQASPgw2XsYLFAZ0Cf7VnLZJsH6lGsjPqHN6eEtydUGrW1CbPXLybdd8a9YR+4UCkz35QxAjYGAVQaNcLbE/cauRnwzeQF7uI2zMRxrar4Gm+f3ZoPeLuGzBH3sD1sD9s9rNBfeZf2DRS+2aq5+2Nvw0yc3DF8s1UzgEn3fWOgWzGyTPFngXRCqq3aGveG/XFvOBcgvq9TvTtfGHz08EbaGfy2PEeKPw2UWWrW94WRBZ4TPWln8AjMAQ3o2gieaUkWpC4zV0bXyLQkeAJ5M+0MnizQgJoC5PLpAsEz81ZIOQeLjHR4ie/rKFuAS1OqzEDnpdyyRhuZFwFHEkVHwLOuXAGfKtWnYHmSJMWieCtFaAlYBWoqMyrPlzJbCvoTrAQMS5oyN6O9FATwAzrKsESzsNYiAAAAAElFTkSuQmCC);
+		}
+
+		.marker-orange{
+		color: #000;
+		background-repeat: no-repeat;
+		background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABsAAAAbCAYAAACN1PRVAAAABmJLR0QA/wD/AP+gvaeTAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH3AUWDBUu9sPjeAAAAahJREFUSMftlrtPwlAUh7+W2lY0xIQ4s8kGUVmMaxc3Rkf+NEZHNpeuhsVHGHFzNibGIJY+qMu5ybEgKI+Nk5zcNmnO1/PIPT8LIAgCCyiJ76lni/9bDmTiiXkOwzC3BOQALuCLuwKzV4BNBRADkXgMpI4EdYEyUJHTkx9Y1VJgAoyBD5OxgfkCOgb6bM4uVLapIz3yJaP+1ck+7bpLrVpamfDyltEbxtw+f/WBhpRyYqsyesDaIIBatUS77ppXz8yArSbPMR9uwlQc06qSLeNts12zAWvbkBniDraD7WDbh+VyK2/TpkBuq62amht7E6bipIZhq606AegN47WBZsWITSR+ZgVB4AGHwNGi5dlp+lyflucGv3ka0x1Evy3PV+AdGDmSWaTWd0PJAsuInu4gugNmgAp0qQRPUpAFEZA5qoymkVFB8Djire4gutdABWoJIBVP5giezFoi5QzMU9LhsdP0kWwBziSDSLJJ1FD8lHKLGq1knulrRc4H+eQcGEmpRgJLwzDM58VbKkILwDJwIGVGyvMpmS0E/QlWALoFTZmq0V4IAvgGhT6occYSftkAAAAASUVORK5CYII=);
+		}
+
+		.marker-red{
+		color: #fff;
+		background-repeat: no-repeat;
+		background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABsAAAAbCAYAAACN1PRVAAAABmJLR0QA/wD/AP+gvaeTAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH3AUWDBUfpx3jQgAAAaNJREFUSMftlrtSwlAQhr+EmETFS2PtG1iojWNLY0drxbNR2dLRpHVo1HfwDUQQT0IwNv+Z2QkIitCxMzs5mTmzX/Yy2T8AaLVaAdCQ75lzwN+tAmbyqT9nWVYFAkVADKTyWLBwDdiXAAXg5AVQRgoaAwfAsZ6JPmBdK4EcmADvPmMPSwU6AwZszm5MtmWkHqXKaHB3lNJuxpzHjbUJr8WM3rigP3ID4EKlzENTxgT4NwjgPG7Qbsb+NfEzEJrJi/zFTZiJ41vVCDXeIdu1EAi2DZkj7mA72A62fVilv/I27QuoQrNVS//H3oSZOKVnhGar5gC9cfFvoF8xslzxZ5F0gtNWvemP3KA/cnMBOicp96f7C4M/vH3SHbqfludE8aeRMnNmfV8YWRB40dMdukdgDmhAt0bwTGuywPnMfBl9I11N8ETy6+7QPVmgAV0LUMqnCwTPLFgh5TwsMdLhpXOSomwBLk2pcgOdl3LLGm1kXgI0JYqawLOuXAFjlWosWJllWbUo3koRWgMeAIcqMyrPhzJbCvoVrAaMa5qyNKO9FATwDew/sHSTkI0qAAAAAElFTkSuQmCC);
+		}
+		.marker-0{}
+		.marker-U:after{content: "U";}
+		.marker-K1:after{content: "K1";}
+		.marker-K2:after{content: "K2";}
+		.marker-K3:after{content: "K3";}
+		.marker-K4:after{content: "K4";}
+		.marker-K5:after{content: "K5";}
+		.marker-K6:after{content: "K6";}
+		.marker-K7:after{content: "K7";}
+		.marker-K8:after{content: "K8";}
+		.marker-K9:after{content: "K9";}
+		.marker-K10:after{content: "K10";}
+		.marker-K11:after{content: "K11";}
+		.marker-K12:after{content: "K12";}
+		.marker-K13:after{content: "K13";}
+		.marker-K14:after{content: "K14";}
+		.marker-K16:after{content: "K16";}
+		.marker-K17:after{content: "K17";}
+		.marker-K18:after{content: "K18";}
+		.marker-K19:after{content: "K19";}
+		.marker-K20:after{content: "K20";}
+		.marker-K21:after{content: "K21";}
+		.marker-K22:after{content: "K22";}
+		.marker-K23:after{content: "K23";}
+		.marker-K24:after{content: "K24";}
+		.marker-K25:after{content: "K25";}
+		.marker-K15:after{content: "K15";}
+
       </style>
    </head>
    <body>
@@ -109,7 +145,7 @@
                     key: '2PaeD4XGBugNF3hwjRa3uRosjkvxAMp8',
                     style: 'tomtom://vector/1/basic-main',
          center: [DEFAULT_POSITION.lon,DEFAULT_POSITION.lat], 
-         zoom: 9
+         zoom: 10
          	});
          var ttZoomControls = new tt.plugins.ZoomControls({
          											className: 'margin-left-30'
@@ -149,10 +185,12 @@
          right: [-5, -15]
          }
               var popup = new tt.Popup({offset: popupOffsets})
-                            .setHTML('<h3>'+row["Full Name of Requester / Referral "]+' : '+row['Mobile Number of Requester / Referral']+'</h3><h4>' + row["Food required location (Eg: Lohegoan, Pune)"] + '</h4>' + '<h4>' + 'Number of people: ' + row["No. of People require food (accept more than 10 only)"] + '</h4>' ); // use the table to populate your popup with text
+                            .setHTML('<h3>'+row["Full Name of Requester / Referral "]+' : '+row['Mobile Number of Requester / Referral']+'</h3><h4>' + row["Food required location (Eg: Lohegoan, Pune)"] + '</h4>' + '<h4>' + 'Number of people: ' + row["No. of People require food (accept more than 10 only)"] +  '<br/>Kitchen : '+row['Kitchen Name']+"<br/>Status:" +row["Status"]+"</h4>" ); // use the table to populate your popup with text
               // create a variable for your markup and add it to the map 
+	     var kitchenMarkerElement=lookupMarker(row);
+
               var marker = new tt.Marker({
-                  color: lookupColor(row)
+                  element:kitchenMarkerElement
                 })
                 .setLngLat([row.Longitude, row.Latitude])
                 .setPopup(popup)
@@ -170,6 +208,25 @@
 				 return 'green'
          return 'skyblue';         
          }
+
+	 function lookupMarker(row){
+		 var kitchenName="U"
+		 if(row["Kitchen Name"]){
+			 kitchenName=row["Kitchen Name"];
+		 }
+		 var div=document.createElement('div');
+		if (row["Status"].toLowerCase()== "ordered")
+			div.classList.add("marker", "marker-red" ,"marker-"+kitchenName);
+		else if (row["Status"].toLowerCase()== "dispatched")
+			div.classList.add("marker", "marker-orange" ,"marker-"+kitchenName);
+		else if (row["Status"].toLowerCase()== "delivered")
+			div.classList.add("marker", "marker-green" ,"marker-"+kitchenName);
+		else
+			div.classList.add("marker", "marker-black" ,"marker-"+kitchenName);
+
+			return div;
+
+	 }
             
       </script>
    </body>
